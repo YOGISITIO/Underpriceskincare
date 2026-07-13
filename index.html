@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Underprice Skincare Medan — Temukan Skincare yang Cocok</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ================= PANEL ILUSTRASI (kiri di desktop, strip atas di mobile) ================= -->
+  <aside class="hero-panel" aria-hidden="true">
+    <div class="hero-panel__texture"></div>
+    <div class="hero-panel__content">
+      <span class="eyebrow">Underprice Skincare · Medan</span>
+      <h1 class="hero-panel__title">Kulitmu<br><em>punya cerita.</em><br>Kami cari<br>formulanya.</h1>
+      <p class="hero-panel__sub">Isi 3 pertanyaan singkat, dapatkan rekomendasi produk yang cocok untuk kulitmu — bukan tebak-tebakan.</p>
+    </div>
+    <svg class="drip drip--1" viewBox="0 0 56 64"><use href="#droplet-shape"/></svg>
+    <svg class="drip drip--2" viewBox="0 0 56 64"><use href="#droplet-shape"/></svg>
+    <svg class="drip drip--3" viewBox="0 0 56 64"><use href="#droplet-shape"/></svg>
+  </aside>
+
+  <!-- Definisi shape droplet yang dipakai ulang -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <path id="droplet-shape" d="M28 2C28 2 6 28 6 42C6 53.0457 15.4315 62 27 62C27.6716 62 28.3284 62 29 62C40.5685 62 50 53.0457 50 42C50 28 28 2 28 2Z"/>
+    </defs>
+  </svg>
+
+  <!-- ================= AREA FORM ================= -->
+  <main class="form-panel">
+    <div class="wizard-card" role="form" aria-labelledby="wizard-title">
+
+      <!-- Progress step (droplet indicator) -->
+      <ol class="step-track" id="stepTrack" aria-label="Progres kuesioner">
+        <li class="step-track__item is-active" data-step-index="0">
+          <span class="step-dot"></span><span class="step-label">Jenis Kulit</span>
+        </li>
+        <li class="step-track__item" data-step-index="1">
+          <span class="step-dot"></span><span class="step-label">Masalah Kulit</span>
+        </li>
+        <li class="step-track__item" data-step-index="2">
+          <span class="step-dot"></span><span class="step-label">Budget</span>
+        </li>
+      </ol>
+
+      <form id="quizForm" novalidate>
+
+        <!-- STEP 1 — Jenis kulit -->
+        <section class="step is-active" data-step="0">
+          <h2 id="wizard-title" class="step__title">Bagaimana jenis kulitmu?</h2>
+          <p class="step__hint">Pilih yang paling mendekati kondisi kulitmu sehari-hari.</p>
+
+          <div class="field">
+            <label for="skinType">Jenis kulit</label>
+            <select id="skinType" name="skinType" required>
+              <option value="" disabled selected>Pilih jenis kulit</option>
+              <option value="normal">Normal</option>
+              <option value="berminyak">Berminyak</option>
+              <option value="kering">Kering</option>
+              <option value="kombinasi">Kombinasi</option>
+              <option value="sensitif">Sensitif</option>
+            </select>
+          </div>
+
+          <div class="step__actions">
+            <span></span>
+            <button type="button" class="btn btn--primary" data-action="next">Lanjut</button>
+          </div>
+        </section>
+
+        <!-- STEP 2 — Masalah kulit -->
+        <section class="step" data-step="1">
+          <h2 class="step__title">Apa masalah kulit yang ingin kamu atasi?</h2>
+          <p class="step__hint">Boleh pilih lebih dari satu, maksimal 3 agar rekomendasi tetap fokus.</p>
+
+          <fieldset class="field field--checkbox-grid">
+            <legend class="sr-only">Masalah kulit</legend>
+            <label class="checkbox-card">
+              <input type="checkbox" name="concerns" value="jerawat">
+              <span>Jerawat</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="concerns" value="flek_hitam">
+              <span>Flek Hitam</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="concerns" value="kusam">
+              <span>Kusam</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="concerns" value="pori_besar">
+              <span>Pori Besar</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="concerns" value="kerutan">
+              <span>Kerutan</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="concerns" value="kemerahan">
+              <span>Kemerahan</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="concerns" value="dehidrasi">
+              <span>Dehidrasi</span>
+            </label>
+          </fieldset>
+          <p class="field-error" id="concernsError" hidden>Pilih minimal 1 masalah kulit.</p>
+
+          <div class="step__actions">
+            <button type="button" class="btn btn--ghost" data-action="back">Kembali</button>
+            <button type="button" class="btn btn--primary" data-action="next">Lanjut</button>
+          </div>
+        </section>
+
+        <!-- STEP 3 — Budget -->
+        <section class="step" data-step="2">
+          <h2 class="step__title">Berapa total budget rutinitasmu?</h2>
+          <p class="step__hint">Ini budget TOTAL untuk satu set produk (bukan per produk). Semakin realistis, semakin akurat rekomendasinya.</p>
+
+          <div class="field">
+            <label for="budget">Total budget (Rp)</label>
+            <div class="input-prefix">
+              <span>Rp</span>
+              <input type="number" id="budget" name="budget" min="10000" step="5000" placeholder="250000" required>
+            </div>
+          </div>
+
+          <div class="step__actions">
+            <button type="button" class="btn btn--ghost" data-action="back">Kembali</button>
+            <button type="submit" class="btn btn--accent">Lihat Rekomendasiku</button>
+          </div>
+        </section>
+
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- ================= MODAL HASIL REKOMENDASI ================= -->
+<div class="modal-overlay" id="resultModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+    <button type="button" class="modal__close" id="closeModal" aria-label="Tutup">✕</button>
+
+    <div class="modal__header">
+      <span class="eyebrow eyebrow--dark">Hasil untukmu</span>
+      <h2 id="resultTitle">Rekomendasi Skincare-mu</h2>
+      <p id="resultSummary" class="modal__summary"></p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="tab-switcher" role="tablist">
+      <button type="button" class="tab-btn is-active" data-tab="top3" role="tab" aria-selected="true">🏆 Top 3 Produk</button>
+      <button type="button" class="tab-btn" data-tab="routine" role="tab" aria-selected="false">🧴 Rutinitas Rekomendasi</button>
+    </div>
+
+    <!-- Panel: Top 3 produk skor tertinggi -->
+    <div class="tab-panel is-active" data-panel="top3">
+      <div class="modal__body" id="resultList" aria-live="polite"></div>
+    </div>
+
+    <!-- Panel: Rutinitas step-by-step + smart budgeting -->
+    <div class="tab-panel" data-panel="routine">
+      <div class="routine-status" id="routineStatus"></div>
+      <ol class="routine-steps" id="routineSteps" aria-live="polite"></ol>
+      <div class="routine-total" id="routineTotal"></div>
+    </div>
+
+    <div class="modal__footer">
+      <button type="button" class="btn btn--ghost" id="restartQuiz">Isi Ulang Kuesioner</button>
+      <button type="button" class="btn-link" id="toggleInsight">📊 Lihat Insight (Admin)</button>
+    </div>
+
+    <!-- Panel insight/analitik di balik layar (demo, tersimpan di localStorage) -->
+    <div class="insight-panel" id="insightPanel" hidden>
+      <h3>Data Insight (demo — tersimpan lokal di browser ini)</h3>
+      <p class="insight-note">
+        Ini simulasi analitik frontend menggunakan <code>localStorage</code>, jadi data hanya
+        terekam di browser ini, bukan gabungan dari semua pengunjung toko. Untuk analitik nyata
+        lintas pengguna, sambungkan fungsi <code>logToBackend()</code> di <code>script.js</code>
+        ke API/database sungguhan (lihat skema tabel <code>rekomendasi_log</code>).
+      </p>
+      <div class="insight-grid">
+        <div class="insight-card">
+          <span class="insight-card__label">Total kuesioner diisi</span>
+          <span class="insight-card__value" id="insightTotal">0</span>
+        </div>
+      </div>
+      <h4>Masalah kulit paling sering dicari</h4>
+      <ul class="insight-bars" id="insightConcerns"></ul>
+      <h4>Produk paling sering direkomendasikan</h4>
+      <ul class="insight-bars" id="insightProducts"></ul>
+      <button type="button" class="btn-link btn-link--danger" id="resetInsight">Reset data insight (demo)</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
